@@ -23,15 +23,15 @@
             component: '../layouts/BasicLayout',
             authority: ['admin', 'user'],
             routes: [
+              // {
+              //   path: '/',
+              //   redirect: '/welcome',
+              // },
               {
                 path: '/',
-                redirect: '/welcome',
-              },
-              {
-                path: '/welcome',
-                name: 'welcome',
-                icon: 'smile',
-                component: './Welcome',
+                name: 'index',
+                icon: 'home',
+                component: './index',
               },
               {
                 path: '/admin',
@@ -71,7 +71,7 @@
     component: './404',
   },
 ];
-export const routes2 =[
+export const routes2 = [
   {
     path: '/',
     component: '../layouts/BlankLayout',
@@ -366,4 +366,4 @@ export const routes2 =[
       },
     ],
   },
-]
+];
