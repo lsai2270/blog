@@ -1,6 +1,6 @@
 import React from 'react';
 import { PageContainer } from '@ant-design/pro-layout';
-import Banner from '@/components/Banner';
+import { Banner, ArticelList } from '@/components/index';
 import styles from './index.less';
 
 export default () => {
@@ -8,7 +8,12 @@ export default () => {
     <PageContainer pageHeaderRender={() => []}>
       <div className={styles.container}>
         <div className={styles.leftContainer}>
-          <Banner />
+          <div>
+            <Banner />
+          </div>
+          <div className={styles.articles}>
+            <ArticelList title="最新文章" />
+          </div>
         </div>
         <div className={styles.rightContainer}></div>
       </div>

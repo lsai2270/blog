@@ -13,15 +13,39 @@
   margin-right: 10px;
   border-radius: 5px;
 }
-// .carousel_item{
-// }
-.topItem li {
+.carousel_item {
+  position: relative;
+  height: 320px;
+  line-height: 320px;
+  // text-align: center;
+  background: #364d79;
+  border-radius: 5px;
+}
+
+.topList li {
+  position: relative;
   width: 180px;
   height: 100px;
   margin-bottom: 10px;
   background-color: cadetblue;
   border-radius: 5px;
+  cursor: pointer;
 }
-.topItem li:last-of-type {
+.topList li:last-of-type {
   margin-bottom: 0;
+}
+.topList_title,
+.carousel_item_title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  padding: 0 10px;
+  overflow: hidden;
+  color: #fff;
+  line-height: 30px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  background-color: rgba(0, 0, 0, 0.1);
 }
