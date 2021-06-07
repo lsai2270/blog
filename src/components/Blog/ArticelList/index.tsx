@@ -1,12 +1,7 @@
 import React from 'react';
 import { Space, Button, Pagination } from 'antd';
-import proSettings from '../../../config/defaultSettings';
-import { createFromIconfontCN } from '@ant-design/icons';
+import { IconFont } from '@/components/index';
 import styles from './index.less';
-
-const IconFont = createFromIconfontCN({
-  scriptUrl: proSettings.iconfontUrl,
-});
 
 interface ArticelListProps {
   title: string;
