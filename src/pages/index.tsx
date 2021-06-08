@@ -1,7 +1,14 @@
 import React from 'react';
 import { Space } from 'antd';
 import { PageContainer } from '@ant-design/pro-layout';
-import { Banner, ArticelList, Notice, Comment } from '@/components/index';
+import {
+  Banner,
+  ArticelList,
+  Notice,
+  Comment,
+  WebsitStatistics,
+  TagCloud,
+} from '@/components/index';
 import styles from './index.less';
 
 export default () => {
@@ -20,6 +27,8 @@ export default () => {
           <Space direction="vertical">
             <Notice />
             <Comment />
+            <WebsitStatistics />
+            <TagCloud />
           </Space>
         </div>
       </div>

@@ -15,7 +15,7 @@ const proSettings: DefaultSettings = {
   colorWeak: false,
   title: 'Ant Design Pro',
   pwa: false,
-  iconfontUrl: '//at.alicdn.com/t/font_1514775_jc1bqaqwlr.js',
+  iconfontUrl: '//at.alicdn.com/t/font_1514775_kgt9i6m6jgo.js',
 };
 
 export type { DefaultSettings };
