@@ -1,4 +1,5 @@
 import React from 'react';
+import { history } from 'umi';
 import { Space, Button, Pagination } from 'antd';
 import { IconFont } from '@/components/index';
 import styles from './index.less';
@@ -36,6 +37,14 @@ const ArticelList: React.FC<ArticelListProps> = (props) => {
   const handleOnPageChange = (page: number | undefined, pageSize: number | undefined) => {
     console.log(page, pageSize);
   };
+  // 文章详情跳转
+  const hanldeOnRouterToDetail = (listItem: any) => {
+    console.log('listItem===>', listItem);
+    history.push({
+      pathname: '/article',
+      query: {},
+    });
+  };
   return (
     <div className={styles.container}>
       <h3 className={styles.title}>{title}</h3>
@@ -45,12 +54,15 @@ const ArticelList: React.FC<ArticelListProps> = (props) => {
             <div key={index} className={styles.articleListItem}>
               {item.titleImg && (
                 <div className={styles.imgContainer}>
-                  <img src={item.titleImg} className={styles.img} />
+                  <img
+                    src={item.titleImg}
+                    className={styles.img}
+                    onClick={() => hanldeOnRouterToDetail(item)}
+                  />
                 </div>
               )}
-
               <div>
-                <h2>
+                <h2 onClick={() => hanldeOnRouterToDetail(item)}>
                   <span className={styles.category}>{item.category}</span>
                   <a>{item.title}</a>
                 </h2>
@@ -73,7 +85,11 @@ const ArticelList: React.FC<ArticelListProps> = (props) => {
                     </Space>
                   </div>
                   <div>
-                    <Button className={styles.btn} type="primary">
+                    <Button
+                      className={styles.btn}
+                      type="primary"
+                      onClick={() => hanldeOnRouterToDetail(item)}
+                    >
                       阅读详情
                     </Button>
                   </div>
