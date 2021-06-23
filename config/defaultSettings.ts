@@ -13,7 +13,7 @@ const proSettings: DefaultSettings = {
   fixedHeader: false,
   fixSiderbar: true,
   colorWeak: false,
-  title: 'Ant Design Pro',
+  title: 'Blog',
   pwa: false,
   iconfontUrl: '//at.alicdn.com/t/font_1514775_kgt9i6m6jgo.js',
 };

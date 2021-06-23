@@ -1,7 +1,7 @@
 import React from 'react';
 import { Space } from 'antd';
 import { PageContainer } from '@ant-design/pro-layout';
-import { Notice, Comment, WebsitStatistics, TagCloud, ArticleDetail } from '@/components/index';
+import { Notice, SideComment, WebsitStatistics, TagCloud, ArticleDetail } from '@/components/index';
 import styles from './index.less';
 
 const Article = () => {
@@ -20,7 +20,7 @@ const Article = () => {
         <div className={styles.rightContainer}>
           <Space direction="vertical">
             <Notice />
-            <Comment />
+            <SideComment />
             <WebsitStatistics />
             <TagCloud />
           </Space>

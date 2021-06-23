@@ -41,7 +41,11 @@ const TagCloud = () => {
       </div>
       <div className={styles.content}>
         {data.map((item: any, index: number) => {
-          return <Tag color={color[index % 11]}>{item}</Tag>;
+          return (
+            <Tag color={color[index % 11]} key={index}>
+              {item}
+            </Tag>
+          );
         })}
       </div>
     </div>

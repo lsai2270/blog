@@ -5,7 +5,7 @@ import {
   Banner,
   ArticelList,
   Notice,
-  Comment,
+  SideComment,
   WebsitStatistics,
   TagCloud,
 } from '@/components/index';
@@ -26,7 +26,7 @@ export default () => {
         <div className={styles.rightContainer}>
           <Space direction="vertical">
             <Notice />
-            <Comment />
+            <SideComment />
             <WebsitStatistics />
             <TagCloud />
           </Space>

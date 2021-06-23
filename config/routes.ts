@@ -14,13 +14,14 @@
           },
         ],
       },
+      // 后台管理界面路由
       {
-        path: '/',
+        path: '/admin',
         component: '../layouts/SecurityLayout',
         routes: [
           {
-            path: '/',
-            component: '../layouts/BasicLayout',
+            path: '/admin',
+            component: '../layouts/BasicLayoutAuthorized',
             authority: ['admin', 'user'],
             routes: [
               // {
@@ -28,40 +29,11 @@
               //   redirect: '/welcome',
               // },
               {
-                path: '/',
+                path: '/admin/home',
                 name: 'index',
                 icon: 'home',
-                component: './index',
+                component: './AdminManage',
               },
-              {
-                path: '/article',
-                name: 'article',
-                // icon: 'home',
-                hideInMenu: true,
-                component: './Article',
-              },
-              // {
-              //   path: '/admin',
-              //   name: 'admin',
-              //   icon: 'crown',
-              //   component: './Admin',
-              //   authority: ['admin'],
-              //   routes: [
-              //     {
-              //       path: '/admin/sub-page',
-              //       name: 'sub-page',
-              //       icon: 'smile',
-              //       component: './Welcome',
-              //       authority: ['admin'],
-              //     },
-              //   ],
-              // },
-              // {
-              //   name: 'list.table-list',
-              //   icon: 'table',
-              //   path: '/list',
-              //   component: './TableList',
-              // },
               {
                 component: './404',
               },
@@ -71,6 +43,37 @@
             component: './404',
           },
         ],
+      },
+      // 博客前端路由
+      {
+        path: '/',
+        component: '../layouts/BasicLayout',
+        // authority: ['admin', 'user'],
+        routes: [
+          // {
+          //   path: '/',
+          //   redirect: '/welcome',
+          // },
+          {
+            path: '/',
+            name: 'index',
+            icon: 'home',
+            component: './index',
+          },
+          {
+            path: '/article',
+            name: 'article',
+            // icon: 'home',
+            hideInMenu: true,
+            component: './Article',
+          },
+          {
+            component: './404',
+          },
+        ],
+      },
+      {
+        component: './404',
       },
     ],
   },

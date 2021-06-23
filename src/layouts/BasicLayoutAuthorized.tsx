@@ -86,7 +86,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
     children,
     settings,
     location = {
-      pathname: '/',
+      pathname: '/admin',
     },
   } = props;
   const menuDataRef = useRef<MenuDataItem[]>([]);
@@ -122,7 +122,12 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
         logo={logo}
         formatMessage={formatMessage}
         {...props}
-        {...settings}
+        {...{
+          ...settings,
+          layout: 'side',
+          contentWidth: 'Fluid',
+          title: '后台管理',
+        }}
         onCollapse={handleMenuCollapse}
         onMenuHeaderClick={() => history.push('/')}
         menuItemRender={(menuItemProps, defaultDom) => {
