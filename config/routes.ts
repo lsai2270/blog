@@ -35,6 +35,12 @@
                 component: './AdminManage',
               },
               {
+                path: '/admin/article',
+                name: 'articleList',
+                icon: 'home',
+                component: './AdminManage/ArticleList',
+              },
+              {
                 component: './404',
               },
             ],

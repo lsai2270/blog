@@ -166,6 +166,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
           menuDataRef.current = menuData || [];
           return menuData || [];
         }}
+        className="blogContainer"
       >
         <Authorized authority={authorized!.authority} noMatch={noMatch}>
           {children}

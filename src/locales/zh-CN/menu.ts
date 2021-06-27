@@ -1,6 +1,7 @@
 export default {
   'menu.index': '首页',
   'menu.article': '文章详情',
+  'menu.articleList': '文章列表',
 
   'menu.welcome': '欢迎',
   'menu.more-blocks': '更多区块',

@@ -53,11 +53,11 @@ const Model: LoginModelType = {
               redirect = redirect.substr(redirect.indexOf('#') + 1);
             }
           } else {
-            window.location.href = '/';
+            window.location.href = '/admin';
             return;
           }
         }
-        history.replace(redirect || '/');
+        history.replace(redirect || '/admin');
       }
     },
 
