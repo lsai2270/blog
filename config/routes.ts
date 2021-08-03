@@ -38,7 +38,22 @@
                 path: '/admin/article',
                 name: 'articleList',
                 icon: 'home',
-                component: './AdminManage/ArticleList',
+                // component: './AdminManage/ArticleList',
+                routes: [
+                  {
+                    path: '/admin/article',
+                    name: 'articleList',
+                    icon: 'home',
+                    component: './AdminManage/ArticleList',
+                  },
+                  {
+                    path: '/admin/article/add',
+                    name: 'addArticle',
+                    icon: 'home',
+                    hideInMenu: true,
+                    component: './AdminManage/ArticleList/addArticle',
+                  }
+                ]
               },
               {
                 component: './404',

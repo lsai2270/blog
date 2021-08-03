@@ -126,6 +126,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
           ...settings,
           layout: 'side',
           contentWidth: 'Fluid',
+          fixedHeader: true,
           title: '后台管理',
         }}
         onCollapse={handleMenuCollapse}
