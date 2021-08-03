@@ -24,10 +24,10 @@
             component: '../layouts/BasicLayoutAuthorized',
             authority: ['admin', 'user'],
             routes: [
-              // {
-              //   path: '/',
-              //   redirect: '/welcome',
-              // },
+              {
+                path: '/admin',
+                redirect: '/admin/home',
+              },
               {
                 path: '/admin/home',
                 name: 'index',
@@ -52,8 +52,14 @@
                     icon: 'home',
                     hideInMenu: true,
                     component: './AdminManage/ArticleList/addArticle',
-                  }
+                  },
                 ]
+              },
+              {
+                path: '/admin/category',
+                name: 'category',
+                icon: 'home',
+                component: './AdminManage/Category',
               },
               {
                 component: './404',
