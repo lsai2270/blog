@@ -5,6 +5,8 @@ import { InboxOutlined } from '@ant-design/icons';
 import { Button, message, Row, Col, Modal, Form, Input, Select, Radio, Space, Upload } from 'antd';
 import E from 'wangeditor';
 import { getList } from '@/services/articles';
+import { getList as categoryList } from '@/services/admin/category';
+import { getList as tagsList } from '@/services/admin/tag';
 import styles from './addArticle.less';
 
 const { confirm } = Modal;
@@ -37,9 +39,23 @@ const AddArticle = () => {
     const editor = new E('#articleContainer');
     editor.config.height = 800;
     editor.create();
-    console.log(editor);
+    // console.log(editor);
     setEditorObj(editor);
+    getCategoryLists();
   }, []);
+  // 获取分类数据
+  const getCategoryLists = () =>{
+    categoryList().then(res=>{
+      setCategoryArr(res.data);
+    })
+  }
+  // 选择分类
+  const handleOnSelectedCategory = (selected:any) =>{
+    console.log('selected',selected);
+    tagsList({id:selected.value}).then(res=>{
+
+    })
+  }
   return (
     <PageContainer title={false}>
       <Row className={styles.addContainer}>
@@ -53,7 +69,7 @@ const AddArticle = () => {
           >
             <Form.Item
               label="标题图片"
-              name="title"
+              name="titleImg"
               rules={[{ required: false, message: '请上传标题图片!' }]}
             >
               <Dragger {...props}>
@@ -69,17 +85,17 @@ const AddArticle = () => {
               name="title"
               rules={[{ required: true, message: '请输入标题!' }]}
             >
-              <Input />
+              <Input placeholder="请输入标题!" />
             </Form.Item>
             <Form.Item
               label="文章分类"
               name="category"
               rules={[{ required: true, message: '请选择文章类型!' }]}
             >
-              <Select defaultValue="lucy">
+              <Select labelInValue placeholder="请选择文章类型!" onChange={handleOnSelectedCategory}>
                 {categoryArr.map((item: any, index: number) => {
                   return (
-                    <Option value={item.id} key={index}>
+                    <Option value={item._id} key={index}>
                       {item.name}
                     </Option>
                   );
@@ -91,7 +107,7 @@ const AddArticle = () => {
               name="tags"
               rules={[{ required: true, message: '请选择文章标签!' }]}
             >
-              <Select mode="multiple" defaultValue="lucy">
+              <Select mode="multiple"  placeholder="请选择文章标签!">
                 <Option value="jack">Jack</Option>
               </Select>
             </Form.Item>
@@ -100,7 +116,7 @@ const AddArticle = () => {
               name="articleType"
               rules={[{ required: true, message: '请选择文章类型!' }]}
             >
-              <Select defaultValue="lucy">
+              <Select placeholder='请选择文章类型!'>
                 <Option value="1">原创</Option>
                 <Option value="2">转载</Option>
               </Select>

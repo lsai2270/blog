@@ -112,9 +112,9 @@ const Article = () => {
         const res = await getList();
         // console.log(res);
         return {
-          data: res.data.data,
+          data: res.data,
           success: true,
-          total: res.data.count,
+          total: res.data.length,
         };
       }}
       columns={columns}
