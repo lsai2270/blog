@@ -18,15 +18,17 @@ const AddArticle = () => {
   const [tagsArr, setTagsArr] = useState<any[]>([]);
   const [editorObj, setEditorObj] = useState<any>(undefined);
   const props = {
-    name: 'articelImg',
     multiple: false,
-    action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+    action: '/api/upload',
     onChange(info: any) {
       const { status } = info.file;
       if (status !== 'uploading') {
         console.log(info.file, info.fileList);
       }
       if (status === 'done') {
+        form.setFieldsValue({
+          coverImg: info.file?.response?.data?.url
+        })
         message.success(`${info.file.name} file uploaded successfully.`);
       } else if (status === 'error') {
         message.error(`${info.file.name} file upload failed.`);
@@ -100,7 +102,7 @@ const AddArticle = () => {
           >
             <Form.Item
               label="标题图片"
-              name="titleImg"
+              name="coverImg"
               rules={[{ required: false, message: '请上传标题图片!' }]}
             >
               <Dragger {...props}>

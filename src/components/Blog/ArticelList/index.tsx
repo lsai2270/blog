@@ -1,15 +1,17 @@
 import React from 'react';
 import { history } from 'umi';
+import moment from 'moment';
 import { Space, Button, Pagination } from 'antd';
 import { IconFont } from '@/components/index';
 import styles from './index.less';
 
 interface ArticelListProps {
   title: string;
+  articleData:any[]
 }
 
 const ArticelList: React.FC<ArticelListProps> = (props) => {
-  const { title } = props;
+  const { title,articleData } = props;
   const data = [
     {
       title: '解决wordpress上传文件目录权限不够问题',
@@ -49,29 +51,29 @@ const ArticelList: React.FC<ArticelListProps> = (props) => {
     <div className={styles.container}>
       <h3 className={styles.title}>{title}</h3>
       <div>
-        {data.map((item: any, index: number) => {
+        {articleData.map((item: any, index: number) => {
           return (
             <div key={index} className={styles.articleListItem}>
-              {item.titleImg && (
+              {item.coverImg && (
                 <div className={styles.imgContainer}>
                   <img
-                    src={item.titleImg}
+                    src={item.coverImg}
                     className={styles.img}
                     onClick={() => hanldeOnRouterToDetail(item)}
                   />
                 </div>
               )}
-              <div>
+              <div className={styles.contentContainer}>
                 <h2 onClick={() => hanldeOnRouterToDetail(item)}>
                   <span className={styles.category}>{item.category}</span>
                   <a>{item.title}</a>
                 </h2>
-                <p className={styles.content}>{item.content}</p>
+                <p className={styles.content} dangerouslySetInnerHTML={{__html:item.content}}></p>
                 <div className={styles.hotDetail}>
                   <div>
                     <Space>
                       <span>
-                        <IconFont type="icon-rili" /> {item.create}
+                        <IconFont type="icon-rili" /> {moment(item.createdAt).format('YYYY-MM-DD hh:mm:ss')}
                       </span>
                       <span>
                         <IconFont type="icon-icon-fire" /> {item.hot}
