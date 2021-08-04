@@ -3,7 +3,7 @@ import { history, connect, Dispatch } from 'umi';
 import ProTable, { ProColumns, ActionType } from '@ant-design/pro-table';
 import { PageContainer } from '@ant-design/pro-layout';
 import { ExclamationCircleOutlined, PlusOutlined } from '@ant-design/icons';
-import { Button, message, Row, Col, Modal } from 'antd';
+import { Button, message, Row, Col, Modal, Space, Tag } from 'antd';
 const { confirm } = Modal;
 import { getList } from '@/services/articles';
 const Article = () => {
@@ -11,22 +11,33 @@ const Article = () => {
   const [selectedRows, setSelectedRows] = useState<any[]>([]);
   const columns: ProColumns<any>[] = [
     {
-      title: '预测名称',
-      key: 'name',
-      dataIndex: 'name',
-      sorter: true,
+      title: '文章名称',
+      key: 'title',
+      dataIndex: 'title',
     },
     {
-      title: '项目名称',
-      key: 'projectName',
-      dataIndex: 'projectName',
-      sorter: true,
-      // hideInSearch: true,
+      title: '文章分类',
+      key: 'category',
+      dataIndex: 'category',
+    },
+    {
+      title: '标签',
+      key: 'tags',
+      dataIndex: 'tags',
+      render: (_, record) => (
+        <Space>
+          {record.tags.map((item: any, tagIndex: number) => (
+            <Tag color="blue" key={tagIndex}>
+              {item}
+            </Tag>
+          ))}
+        </Space>
+      ),
     },
     {
       title: '预测时间',
-      key: 'atCreated',
-      dataIndex: 'atCreated',
+      key: 'createdAt',
+      dataIndex: 'createdAt',
       sorter: true,
       search: false,
       valueType: 'date',
@@ -49,9 +60,7 @@ const Article = () => {
     },
   ];
   // 删除
-  const handleOnDelete = (record:any) =>{
-
-  }// 新建
+  const handleOnDelete = (record: any) => {}; // 新建
   const handleOnRouteTo = () => {
     history.push('/admin/article/add');
   };
@@ -74,11 +83,11 @@ const Article = () => {
           ids: selectedRows.map((item: any) => item._id),
         };
         // batchDeletePredict(params).then((res) => {
-          // if (res.code == 200) {
-            setSelectedRows([]);
-            message.success('批量删除预测成功!');
-            actionRef.current?.reloadAndRest?.();
-          // }
+        // if (res.code == 200) {
+        setSelectedRows([]);
+        message.success('批量删除预测成功!');
+        actionRef.current?.reloadAndRest?.();
+        // }
         // });
       },
       onCancel() {
@@ -87,72 +96,74 @@ const Article = () => {
     });
   };
 
-  return <PageContainer title={false} >
-    <ProTable
-      headerTitle=""
-      actionRef={actionRef}
-      rowKey={(record) => record._id}
-      search={{
-        span: 5,
-      }}
-      options={false}
-      toolBarRender={() => [
-        <Button type="primary" key="1" icon={<PlusOutlined />} onClick={handleOnRouteTo}>
-          新建文章
-        </Button>,
-        <Button key="2" onClick={handleOnMoreRemove}>
-          批量删除
-        </Button>,
-      ]}
-      pagination={{
-        // showQuickJumper: true,
-        pageSize: 10,
-      }}
-      request={async (params, sorter, filter) => {
-        const res = await getList();
-        // console.log(res);
-        return {
-          data: res.data,
-          success: true,
-          total: res.data.length,
-        };
-      }}
-      columns={columns}
-      rowSelection={{
-        onChange: (_, selectedRows) => setSelectedRows(selectedRows),
-      }}
-      // tableAlertOptionRender={({ onCleanSelected }) => {
-      //   return (
-      //     <>
-      //       <Space size={24}>
-      //         <span>
-      //           <a style={{ marginLeft: 8 }} onClick={onCleanSelected}>
-      //             取消选择
-      //           </a>
-      //         </span>
-      //       </Space>
-      //       <Space size={24}>
-      //         <span>
-      //           <a
-      //             style={{ marginLeft: 8 }}
-      //             onClick={async () => {
-      //               await handleRemove(selectedRowsState);
-      //               setSelectedRows([]);
-      //               actionRef.current?.reloadAndRest?.();
-      //             }}
-      //           >
-      //             <FormattedMessage
-      //               id="pages.searchTable.batchDeletion"
-      //               defaultMessage="批量删除"
-      //             />
-      //           </a>
-      //         </span>
-      //       </Space>
-      //     </>
-      //   );
-      // }}
-    />
-  </PageContainer>;
+  return (
+    <PageContainer title={false}>
+      <ProTable
+        headerTitle=""
+        actionRef={actionRef}
+        rowKey={(record) => record._id}
+        search={{
+          span: 5,
+        }}
+        options={false}
+        toolBarRender={() => [
+          <Button type="primary" key="1" icon={<PlusOutlined />} onClick={handleOnRouteTo}>
+            新建文章
+          </Button>,
+          <Button key="2" onClick={handleOnMoreRemove}>
+            批量删除
+          </Button>,
+        ]}
+        pagination={{
+          // showQuickJumper: true,
+          pageSize: 10,
+        }}
+        request={async (params, sorter, filter) => {
+          const res = await getList();
+          // console.log(res);
+          return {
+            data: res.data,
+            success: true,
+            total: res.data.length,
+          };
+        }}
+        columns={columns}
+        rowSelection={{
+          onChange: (_, selectedRows) => setSelectedRows(selectedRows),
+        }}
+        // tableAlertOptionRender={({ onCleanSelected }) => {
+        //   return (
+        //     <>
+        //       <Space size={24}>
+        //         <span>
+        //           <a style={{ marginLeft: 8 }} onClick={onCleanSelected}>
+        //             取消选择
+        //           </a>
+        //         </span>
+        //       </Space>
+        //       <Space size={24}>
+        //         <span>
+        //           <a
+        //             style={{ marginLeft: 8 }}
+        //             onClick={async () => {
+        //               await handleRemove(selectedRowsState);
+        //               setSelectedRows([]);
+        //               actionRef.current?.reloadAndRest?.();
+        //             }}
+        //           >
+        //             <FormattedMessage
+        //               id="pages.searchTable.batchDeletion"
+        //               defaultMessage="批量删除"
+        //             />
+        //           </a>
+        //         </span>
+        //       </Space>
+        //     </>
+        //   );
+        // }}
+      />
+    </PageContainer>
+  );
 };
 
 export default Article;
