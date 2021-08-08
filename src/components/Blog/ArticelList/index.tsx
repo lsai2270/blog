@@ -44,7 +44,7 @@ const ArticelList: React.FC<ArticelListProps> = (props) => {
     console.log('listItem===>', listItem);
     history.push({
       pathname: '/article',
-      query: {},
+      query: {id:listItem._id},
     });
   };
   return (

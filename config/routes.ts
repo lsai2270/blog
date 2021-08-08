@@ -88,6 +88,75 @@
             component: './index',
           },
           {
+            path: '/webFront',
+            name: 'webFront',
+            icon: 'home',
+            routes:[
+              {
+                path: '/webFront/react',
+                name: 'react',
+                icon: 'home',
+                component: './WebFront',
+              },
+              {
+                path: '/webFront/vue',
+                name: 'vue',
+                icon: 'home',
+                component: './WebFront',
+              },
+              {
+                path: '/webFront/html',
+                name: 'html',
+                icon: 'home',
+                component: './WebFront',
+              },
+              {
+                path: '/webFront/css',
+                name: 'css',
+                icon: 'home',
+                component: './WebFront',
+              },
+              {
+                path: '/webFront/js',
+                name: 'js',
+                icon: 'home',
+                component: './WebFront',
+              },
+            ]
+          },
+          {
+            path: '/server',
+            name: 'webServer',
+            icon: 'home',
+            routes:[
+              {
+                path: '/server/node',
+                name: 'node',
+                icon: 'home',
+                component: './WebServer',
+              },
+            ]
+          },
+          {
+            path: '/frame',
+            name: 'frame',
+            icon: 'home',
+            component: './Iframe',
+          },
+          {
+            path: '/personal',
+            name: 'personal',
+            icon: 'home',
+            routes:[
+              {
+                path: '/personal/introduce',
+                name: 'introduce',
+                icon: 'home',
+                component: './WebServer',
+              },
+            ]
+          },
+          {
             path: '/article',
             name: 'article',
             // icon: 'home',

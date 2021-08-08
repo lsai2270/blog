@@ -1,5 +1,17 @@
 export default {
   'menu.index': '首页',
+  'menu.webFront': 'web前端',
+  'menu.webFront.html': 'html',
+  'menu.webFront.css': 'css',
+  'menu.webFront.js': 'javascript',
+  'menu.webFront.react': 'react',
+  'menu.webFront.vue': 'vue',
+  'menu.webServer': '后端',
+  'menu.webServer.node': 'node',
+  'menu.frame': '框架实践',
+  'menu.personal': '关于博主',
+  'menu.personal.introduce': '自我介绍',
+  
   'menu.article': '文章详情',
   'menu.articleList': '文章列表',
   'menu.articleList.articleList':'文章列表',  
