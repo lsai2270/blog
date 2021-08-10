@@ -29,30 +29,32 @@ const ArticleDetail = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.title}>
-        <h2>{article?.title}</h2>
-        <div>
-          <Space>
-            <span>分类: {article?.category} </span> |
-            <span>
-              <IconFont type="icon-user" /> 涯余
-            </span>
-            <span>
-              <IconFont type="icon-rili" /> {moment(article?.createdAt).format('YYYY-MM-DD hh:mm:ss')}
-            </span>
-            <span>
-              <IconFont type="icon-icon-fire" /> {article?.viewNum}
-            </span>
-            <span>
-              <IconFont type="icon-pinglun" /> {article?.comments?.length}
-            </span>
-            <span>
-              <IconFont type="icon-like" /> {article?.praiseNum}
-            </span>
-          </Space>
+      <div className={styles.arcticle}>
+        <div className={styles.title}>
+          <h2>{article?.title}</h2>
+          <div>
+            <Space>
+              <span>分类: {article?.category} </span> |
+              <span>
+                <IconFont type="icon-user" /> 涯余
+              </span>
+              <span>
+                <IconFont type="icon-rili" /> {moment(article?.createdAt).format('YYYY-MM-DD hh:mm:ss')}
+              </span>
+              <span>
+                <IconFont type="icon-icon-fire" /> {article?.viewNum}
+              </span>
+              <span>
+                <IconFont type="icon-pinglun" /> {article?.comments?.length}
+              </span>
+              <span>
+                <IconFont type="icon-like" /> {article?.praiseNum}
+              </span>
+            </Space>
+          </div>
         </div>
+        <div className={styles.content} dangerouslySetInnerHTML={{__html:article?.content}}></div>
       </div>
-      <div className={styles.content} dangerouslySetInnerHTML={{__html:article?.content}}></div>
       <div className={styles.comments}>
         <Comment />
       </div>

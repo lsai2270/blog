@@ -10,7 +10,7 @@ const proSettings: DefaultSettings = {
   primaryColor: '#1890ff',
   layout: 'top',
   contentWidth: 'Fixed',
-  fixedHeader: false,
+  fixedHeader: true,
   fixSiderbar: true,
   colorWeak: false,
   title: 'Blog',

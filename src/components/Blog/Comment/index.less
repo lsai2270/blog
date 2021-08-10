@@ -1,4 +1,24 @@
 @import '~antd/lib/style/themes/default.less';
 .container {
   background-color: #fff;
+  :global{
+    .ant-form-item {
+      margin-bottom: 20px !important;
+    }
+  }
+  .commmentBox{
+    padding: 15px;
+    border-radius: 3px;
+    background: rgba(236, 233, 233, 0.6);
+    .statement{
+      margin-bottom: 20px;
+      span{
+        color: red;
+      }
+    }
+  }
+  .submit{
+    display: flex;
+    justify-content: center;
+  }
 }
