@@ -62,7 +62,7 @@ const Article = () => {
   // 删除
   const handleOnDelete = (record: any) => {}; // 新建
   const handleOnRouteTo = () => {
-    history.push('/admin/article/add');
+    history.push('/admin/article/list/add');
   };
   // 批量删除
   const handleOnMoreRemove = () => {
@@ -119,12 +119,12 @@ const Article = () => {
           pageSize: 10,
         }}
         request={async (params, sorter, filter) => {
-          const res = await getList();
+          const res = await getList(params);
           // console.log(res);
           return {
-            data: res.data,
+            data: res.data.data,
             success: true,
-            total: res.data.length,
+            total: res.data.count,
           };
         }}
         columns={columns}

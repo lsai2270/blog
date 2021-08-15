@@ -1,7 +1,11 @@
 import request from '@/utils/request';
 
-export async function getList(): Promise<any> {
-  return request('/article/list');
+export async function getList(params:any): Promise<any> {
+  const newParams = {
+    page: params.current,
+    limit: params.pageSize
+  }
+  return request('/article/list',{params:newParams});
 }
 export async function getArcticleById(id:string): Promise<any> {
   return request(`/article/list/${id}`);

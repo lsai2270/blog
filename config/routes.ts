@@ -36,22 +36,27 @@
               },
               {
                 path: '/admin/article',
-                name: 'articleList',
+                name: 'articleManage',
                 icon: 'home',
-                // component: './AdminManage/ArticleList',
                 routes: [
                   {
-                    path: '/admin/article',
+                    path: '/admin/article/list',
                     name: 'articleList',
                     icon: 'home',
                     component: './AdminManage/ArticleList',
                   },
                   {
-                    path: '/admin/article/add',
+                    path: '/admin/article/list/add',
                     name: 'addArticle',
                     icon: 'home',
                     hideInMenu: true,
                     component: './AdminManage/ArticleList/addArticle',
+                  },
+                  {
+                    path: '/admin/article/commentList',
+                    name: 'commentList',
+                    icon: 'home',
+                    component: './AdminManage/Comment',
                   },
                 ]
               },

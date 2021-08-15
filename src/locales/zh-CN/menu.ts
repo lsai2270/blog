@@ -13,9 +13,10 @@ export default {
   'menu.personal.introduce': '自我介绍',
   
   'menu.article': '文章详情',
-  'menu.articleList': '文章列表',
-  'menu.articleList.articleList':'文章列表',  
-  'menu.articleList.addArticle':'新建文章',  
+  'menu.articleManage': '文章管理',
+  'menu.articleManage.articleList':'文章列表',  
+  'menu.articleManage.addArticle':'新建文章',  
+  'menu.articleManage.commentList':'评论列表',  
   'menu.category': '分类',
 
   'menu.welcome': '欢迎',
