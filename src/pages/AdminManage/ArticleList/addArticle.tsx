@@ -51,8 +51,11 @@ const AddArticle = () => {
   };
   // 获取分类数据
   const getCategoryLists = () => {
-    categoryList().then((res) => {
-      setCategoryArr(res.data);
+    categoryList({
+      current:1,
+      pageSize: 10
+    }).then((res) => {
+      setCategoryArr(res.data.data);
     });
   };
   // 选择分类

@@ -191,12 +191,12 @@ const CategoryComp = () => {
         pageSize: 10,
       }}
       request={async (params, sorter, filter) => {
-        const res = await getList();
+        const res = await getList(params);
         // console.log(res);
         return {
-          data: res.data,
+          data: res.data.data,
           success: true,
-          total: res.data.length,
+          total: res.data.count,
         };
       }}
       columns={columns}

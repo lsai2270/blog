@@ -13,14 +13,16 @@ import { getList } from '@/services/articles';
 import styles from './index.less';
 
 export default () => {
-  const [articleData,setArticleData] = useState<any[]>([]);
   useEffect(()=>{
-    getList().then(res=>{
-      console.log(res);
-      if(res.code==200){
-        setArticleData(res.data);
-      }
-    })
+    // getList({
+    //   current: 1,
+    //   pageSize: 10,
+    // }).then(res=>{
+    //   console.log(res);
+    //   if(res.code==200){
+    //     setArticleData(res.data.data);
+    //   }
+    // })
   },[])
   return (
     <PageContainer pageHeaderRender={() => []}>
@@ -30,7 +32,7 @@ export default () => {
             <Banner />
           </div>
           <div className={styles.articles}>
-            <ArticelList title="最新文章" articleData={articleData} />
+            <ArticelList title="最新文章" />
           </div>
         </div>
         <div className={styles.rightContainer}>

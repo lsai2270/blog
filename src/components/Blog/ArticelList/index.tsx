@@ -1,17 +1,39 @@
-import React from 'react';
+import React,{ useEffect, useState } from 'react';
 import { history } from 'umi';
 import moment from 'moment';
 import { Space, Button, Pagination } from 'antd';
 import { IconFont } from '@/components/index';
+import { getList } from '@/services/articles';
 import styles from './index.less';
 
 interface ArticelListProps {
   title: string;
-  articleData:any[]
+  // articleData:any[]
 }
 
 const ArticelList: React.FC<ArticelListProps> = (props) => {
-  const { title,articleData } = props;
+  const { title } = props;
+  const [pagination,setPagination]  = useState<any>({
+    current: 1,
+    pageSize: 10,
+    total: 0
+  });
+  const [articleData,setArticleData] = useState<any[]>([]);
+  useEffect(()=>{
+    getList({
+      current: 1,
+      pageSize: 10,
+    }).then(res=>{
+      console.log(res);
+      if(res.code==200){
+        setArticleData(res.data.data);
+        setPagination({
+          ...pagination,
+          total: res.data.count
+        })
+      }
+    })
+  },[])
   const data = [
     {
       title: '解决wordpress上传文件目录权限不够问题',
@@ -38,6 +60,11 @@ const ArticelList: React.FC<ArticelListProps> = (props) => {
   ];
   const handleOnPageChange = (page: number | undefined, pageSize: number | undefined) => {
     console.log(page, pageSize);
+    setPagination({
+      ...pagination,
+      current: page,
+      pageSize: pageSize,
+    })
   };
   // 文章详情跳转
   const hanldeOnRouterToDetail = (listItem: any) => {
@@ -101,9 +128,12 @@ const ArticelList: React.FC<ArticelListProps> = (props) => {
           );
         })}
       </div>
-      <div className={styles.pagination}>
-        <Pagination size="small" total={50} showQuickJumper onChange={handleOnPageChange} />
-      </div>
+      { articleData&&articleData.length>0&&(
+          <div className={styles.pagination}>
+            <Pagination size="small" {...pagination} showQuickJumper onChange={handleOnPageChange} />
+          </div>
+        )
+      }
     </div>
   );
 };

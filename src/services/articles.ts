@@ -1,6 +1,8 @@
 import request from '@/utils/request';
 
 export async function getList(params:any): Promise<any> {
+  console.log('params',params);
+  
   const newParams = {
     page: params.current,
     limit: params.pageSize
