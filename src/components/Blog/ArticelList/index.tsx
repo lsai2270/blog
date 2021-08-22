@@ -103,13 +103,13 @@ const ArticelList: React.FC<ArticelListProps> = (props) => {
                         <IconFont type="icon-rili" /> {moment(item.createdAt).format('YYYY-MM-DD hh:mm:ss')}
                       </span>
                       <span>
-                        <IconFont type="icon-icon-fire" /> {item.hot}
+                        <IconFont type="icon-icon-fire" /> {item.viewNum}
                       </span>
                       <span>
-                        <IconFont type="icon-pinglun" /> {item.comment}
+                        <IconFont type="icon-pinglun" /> {item.commentsNum}
                       </span>
                       <span>
-                        <IconFont type="icon-like" /> {item.like}
+                        <IconFont type="icon-like" /> {item.praiseNum}
                       </span>
                     </Space>
                   </div>

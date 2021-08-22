@@ -7,7 +7,7 @@ export async function getCommentsList(params:any): Promise<any> {
   }
   return request('/comment/list',{params:newParams});
 }
-export async function getCommentById(id:string): Promise<any> {
+export async function getCommentsById(id:string): Promise<any> {
   return request(`/comment/list/${id}`);
 }
 export async function createComment(data: any): Promise<any> {

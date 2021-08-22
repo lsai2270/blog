@@ -1,18 +1,24 @@
 import React,{ useEffect, useState } from 'react';
+import {Button, Form,Input, Space,message} from 'antd';
 import { history } from 'umi';
 import E from 'wangeditor';
-import {Button, Form,Input, Space,message} from 'antd';
-import { createComment } from '@/services/comment';
+import moment from 'moment';
+import { createComment,getCommentsById } from '@/services/comment';
+import { getRandomColor } from '@/tools';
 import styles from './index.less';
-
 const Comment = () => {
   const { id }:any = history.location.query;
   const [form] = Form.useForm();
   const [editorObj, setEditorObj] = useState<any>(undefined);
-
+  const [commentLists, setCommentLists] = useState<any>([]);
   useEffect(()=>{
     hanldeOnInitEditor();
-    
+    getCommentsById(id).then(res=>{
+      console.log('====================================');
+      console.log(res);
+      setCommentLists(res.data);
+      console.log('====================================');
+    })
   },[])
   // 初始化editor
   const hanldeOnInitEditor = () =>{
@@ -33,9 +39,6 @@ const Comment = () => {
       comment: editorObj.txt.html()
     })
     const formData = await form.validateFields();
-    console.log('====================================');
-    console.log(formData);
-    console.log('====================================');
     createComment({
       ...formData,
       arcticleId: id
@@ -95,6 +98,22 @@ const Comment = () => {
       </div>
     </div>
     <div className={styles.commmentLists}>
+      {commentLists.map((item:any,index:number)=>{
+        return(
+        <div key={index} className={styles.listItem}>
+          <div className={styles.authorAvatar} style={{background: getRandomColor()}}>{item.userName.slice(0,1)}</div>
+          <div className={styles.contentBox}>
+            <div className={styles.userName}>
+              <Space>
+                <h4>{item.userName}</h4>
+                <h4>{moment(item.createdAt).startOf('day').fromNow()}</h4>
+              </Space>
+            </div>
+            <div className={styles.content} dangerouslySetInnerHTML={{__html: item.comment}}></div>
+            <div></div>
+          </div>
+        </div>
+      )})}
     </div>
   </div>;
 };
