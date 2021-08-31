@@ -4,9 +4,9 @@ import { PageContainer } from '@ant-design/pro-layout';
 import { InboxOutlined } from '@ant-design/icons';
 import { Button, message, Row, Col, Modal, Form, Input, Select, Radio, Space, Upload } from 'antd';
 import E from 'wangeditor';
-import { getList, createArticle } from '@/services/articles';
-import { getList as categoryList } from '@/services/admin/category';
-import { getListById } from '@/services/admin/tag';
+import { createArticle } from '@/services/articles';
+import { getAllList } from '@/services/category';
+import { getListById } from '@/services/tag';
 import styles from './addArticle.less';
 
 const { confirm } = Modal;
@@ -51,11 +51,8 @@ const AddArticle = () => {
   };
   // 获取分类数据
   const getCategoryLists = () => {
-    categoryList({
-      current:1,
-      pageSize: 10
-    }).then((res) => {
-      setCategoryArr(res.data.data);
+    getAllList().then((res) => {
+      setCategoryArr(res.data);
     });
   };
   // 选择分类

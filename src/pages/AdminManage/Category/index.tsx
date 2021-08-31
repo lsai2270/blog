@@ -5,8 +5,8 @@ import { PageContainer } from '@ant-design/pro-layout';
 import { ExclamationCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, message, Row, Col, Modal,Form,Input } from 'antd';
 const { confirm } = Modal;
-import { createCategories,getList, } from '@/services/admin/category';
-import { createTags } from '@/services/admin/tag';
+import { createCategories, getList, } from '@/services/category';
+import { createTags } from '@/services/tag';
 
 const CategoryComp = () => {
   const [form] = Form.useForm();

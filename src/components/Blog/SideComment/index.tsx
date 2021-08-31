@@ -1,22 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { IconFont } from '@/components/index';
+import { getRandomColor } from '@/tools';
+import { getCommentsList } from '@/services/comment';
 import styles from './index.less';
 
+
 const SideCommentList = () => {
-  const color = [
-    '#ff4d4f',
-    '#36cfc9',
-    '#ff7a45',
-    '#40a9ff',
-    '#ffa940',
-    '#73d13d',
-    '#ffc53d',
-    '#597ef7',
-    '#ffec3d',
-    '#bae637',
-    '#9254de',
-    '#f759ab',
-  ];
+  const [commentLists, setCommentLists] = useState<any[]>([]);
+  useEffect(()=>{
+    getCommentsList({
+      pageSize: 10,
+      current: 1
+    }).then(res=>{
+      if(res.code==200){
+        setCommentLists(res.data.data)
+      }
+    })
+  },[])
   const data = [
     {
       userName: '二当家',
@@ -48,19 +48,19 @@ const SideCommentList = () => {
       </div>
       <div className={styles.commentList}>
         <ul>
-          {data?.map((item: any, index: number) => {
+          {commentLists?.map((item: any, index: number) => {
             return (
               <li key={index}>
                 <div className={styles.name}>
-                  <span style={{ background: color[index] }}>{item?.userName.slice(0, 1)}</span>
+                  <span style={{ background: getRandomColor() }}>{item?.userName.slice(0, 1)}</span>
                 </div>
                 <div>
                   <div>
                     <a>{item.userName}</a>
                   </div>
-                  <div className={`${styles.elips} ${styles.content}`}>{item.comments}</div>
+                  <div className={`${styles.elips} ${styles.content}`} dangerouslySetInnerHTML={{__html:item.comment}}></div>
                   <div className={styles.elips}>
-                    <a>评: {item.articelTitle}</a>{' '}
+                    <a>评: {item.articleInfo.title}</a>
                   </div>
                 </div>
               </li>

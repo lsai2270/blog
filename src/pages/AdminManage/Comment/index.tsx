@@ -28,15 +28,15 @@ export default () => {
     },
     {
       title: '回复状态',
-      key: 'status',
-      dataIndex: 'status',
+      key: 'replyStatus',
+      dataIndex: 'replyStatus',
       valueType: 'select',
       valueEnum: {
-        open: {
+        1: {
           text: '未回复',
           status: 'Error',
         },
-        closed: {
+        2: {
           text: '已回复',
           status: 'Success',
           disabled: true,

@@ -9,6 +9,10 @@ export async function getList(params?:any): Promise<any> {
     page: params.current,
     limit: params.pageSize
   }
+  
   return request.get('/category/list',{params:newParams});
+}
+export async function getAllList(): Promise<any> {
+  return request.get('/category/list/all');
 }
 

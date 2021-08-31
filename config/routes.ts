@@ -95,7 +95,7 @@
           {
             path: '/webFront',
             name: 'webFront',
-            icon: 'home',
+            icon: 'icon-h',
             routes:[
               {
                 path: '/webFront/react',
@@ -132,12 +132,12 @@
           {
             path: '/server',
             name: 'webServer',
-            icon: 'home',
+            icon: 'icon-service-full',
             routes:[
               {
                 path: '/server/node',
                 name: 'node',
-                icon: 'home',
+                // icon: 'icon-service-full',
                 component: './WebServer',
               },
             ]
@@ -145,13 +145,13 @@
           {
             path: '/frame',
             name: 'frame',
-            icon: 'home',
+            icon: 'icon-jiagou',
             component: './Iframe',
           },
           {
             path: '/personal',
             name: 'personal',
-            icon: 'home',
+            icon: 'icon-user',
             routes:[
               {
                 path: '/personal/introduce',

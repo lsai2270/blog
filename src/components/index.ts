@@ -7,6 +7,7 @@ import WebsitStatistics from './Blog/WebsitStatistics';
 import TagCloud from './Blog/TagCloud';
 import ArticleDetail from './Blog/ArticleDetail';
 import Comment from './Blog/Comment';
+import BusinessCard from './Blog/BusinessCard';
 // IconFont
 import proSettings from '../../config/defaultSettings';
 import { createFromIconfontCN } from '@ant-design/icons';
@@ -26,4 +27,5 @@ export {
   TagCloud,
   ArticleDetail,
   Comment,
+  BusinessCard
 };

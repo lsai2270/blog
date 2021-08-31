@@ -1,23 +1,22 @@
-import React from 'react';
+import React,{ useEffect, useState } from 'react';
 import { Tag } from 'antd';
 import { IconFont } from '@/components/index';
+import { getRandomColor } from '@/tools';
+import { getList } from '@/services/tag';
 import styles from './index.less';
 
 const TagCloud = () => {
-  const color = [
-    '#ff4d4f',
-    '#36cfc9',
-    '#ff7a45',
-    '#40a9ff',
-    '#ffa940',
-    '#73d13d',
-    '#ffc53d',
-    '#597ef7',
-    '#ffec3d',
-    '#bae637',
-    '#9254de',
-    '#f759ab',
-  ];
+  const [tagLists, setTagLists] = useState<any[]>([]);
+  useEffect(() => {
+    getList({
+      current: 1,
+      pageSize: 20
+    }).then(res=>{
+      if(res.code==200){
+        setTagLists(res.data.data)
+      }
+    })
+  }, []);
   const data = [
     'Vue',
     'React',
@@ -40,10 +39,10 @@ const TagCloud = () => {
         </p>
       </div>
       <div className={styles.content}>
-        {data.map((item: any, index: number) => {
+        {tagLists.map((item: any, index: number) => {
           return (
-            <Tag color={color[index % 11]} key={index}>
-              {item}
+            <Tag color={getRandomColor()} key={index}>
+              {item.name}
             </Tag>
           );
         })}

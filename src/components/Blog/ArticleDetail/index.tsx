@@ -2,7 +2,7 @@ import React,{ useEffect,useState } from 'react';
 import { history } from 'umi';
 import { Space } from 'antd';
 import moment from 'moment';
-import { IconFont, Comment } from '@/components/index';
+import { IconFont, Comment,BusinessCard } from '@/components/index';
 import {getArcticleById } from '@/services/articles';
 import styles from './index.less';
 
@@ -45,7 +45,7 @@ const ArticleDetail = () => {
                 <IconFont type="icon-icon-fire" /> {article?.viewNum}
               </span>
               <span>
-                <IconFont type="icon-pinglun" /> {article?.comments?.length}
+                <IconFont type="icon-pinglun" /> {article?.commentsNum}
               </span>
               <span>
                 <IconFont type="icon-like" /> {article?.praiseNum}
@@ -55,8 +55,11 @@ const ArticleDetail = () => {
         </div>
         <div className={styles.content} dangerouslySetInnerHTML={{__html:article?.content}}></div>
       </div>
+      <div className={styles.personalInfo}>
+        <BusinessCard />
+      </div>
       <div className={styles.comments}>
-        <Comment />
+        <Comment title={article?.title} />
       </div>
     </div>
   );

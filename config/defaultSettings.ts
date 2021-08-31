@@ -15,7 +15,7 @@ const proSettings: DefaultSettings = {
   colorWeak: false,
   title: 'Blog',
   pwa: false,
-  iconfontUrl: '//at.alicdn.com/t/font_1514775_kgt9i6m6jgo.js',
+  iconfontUrl: '//at.alicdn.com/t/font_1514775_42txly86vu.js',
 };
 
 export type { DefaultSettings };

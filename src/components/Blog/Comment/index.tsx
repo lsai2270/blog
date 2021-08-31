@@ -6,7 +6,10 @@ import moment from 'moment';
 import { createComment,getCommentsById } from '@/services/comment';
 import { getRandomColor } from '@/tools';
 import styles from './index.less';
-const Comment = () => {
+interface commentProps {
+  title?: string
+}
+const Comment:React.FC<commentProps> = ({title}) => {
   const { id }:any = history.location.query;
   const [form] = Form.useForm();
   const [editorObj, setEditorObj] = useState<any>(undefined);
@@ -51,6 +54,7 @@ const Comment = () => {
     })
   }
   return <div className={styles.container}>
+    {title&&(<div className={styles.titleBox}>共 {commentLists.length} 条评论关于“{title}”</div>)}
     <div className={styles.commmentBox}>
       <div className={styles.statement}>
         发表评论 <br />
@@ -110,7 +114,11 @@ const Comment = () => {
               </Space>
             </div>
             <div className={styles.content} dangerouslySetInnerHTML={{__html: item.comment}}></div>
-            <div></div>
+            {Boolean(item.reply)&&(
+              <div>
+                <a>回复:</a>{item.reply}
+              </div>
+            )}
           </div>
         </div>
       )})}

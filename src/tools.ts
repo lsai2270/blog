@@ -15,8 +15,7 @@ function getRandomColor() {
     '#f759ab',
   ];
   let index = Math.round(Math.random()*11+1);
-  console.log("index====>",index);
-  return colorsArr[index]
+  return colorsArr[index-1]
 }
 export {
   getRandomColor
