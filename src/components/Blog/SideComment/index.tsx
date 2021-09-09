@@ -60,7 +60,7 @@ const SideCommentList = () => {
                   </div>
                   <div className={`${styles.elips} ${styles.content}`} dangerouslySetInnerHTML={{__html:item.comment}}></div>
                   <div className={styles.elips}>
-                    <a>评: {item.articleInfo.title}</a>
+                    <a href={`/article?id=${item.articleInfo._id}`}>评: {item.articleInfo.title}</a>
                   </div>
                 </div>
               </li>

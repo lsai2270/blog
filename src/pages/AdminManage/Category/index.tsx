@@ -5,7 +5,7 @@ import { PageContainer } from '@ant-design/pro-layout';
 import { ExclamationCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, message, Row, Col, Modal,Form,Input } from 'antd';
 const { confirm } = Modal;
-import { createCategories, getList, } from '@/services/category';
+import { createCategories, getList, updateCategory } from '@/services/category';
 import { createTags } from '@/services/tag';
 
 const CategoryComp = () => {
@@ -51,6 +51,14 @@ const CategoryComp = () => {
         <a
           key="2"
           onClick={() => {
+            handleOnEditor(record);
+          }}
+        >
+          编辑
+        </a>,
+        <a
+          key="3"
+          onClick={() => {
             handleOnAddTags(record);
           }}
         >
@@ -62,6 +70,18 @@ const CategoryComp = () => {
   // 删除
   const handleOnDelete = (record:any) =>{
 
+  }
+  const handleOnEditor = (record:any) =>{
+    setIsModelTitle(()=>{
+      return '编辑';
+    })
+    setRecordData(record);
+    setIsModelVisible(true);
+    setTimeout(() => {
+      form.setFieldsValue({
+        name: record.name
+      })
+    }, 100);
   }
   // 新增标签
   const handleOnAddTags = (record:any) =>{
@@ -110,7 +130,7 @@ const CategoryComp = () => {
     console.log("formData",formData);
     if(isModelTitle=="新增分类"){
       createCategories(formData).then(res=>{
-        console.log(res);
+        // console.log(res);
         if(res.code==200){
           form.resetFields();
           setIsModelVisible(false);
@@ -127,6 +147,19 @@ const CategoryComp = () => {
         if(res.code==200){
           form.resetFields();
           setIsModelVisible(false);
+          actionRef.current?.reloadAndRest?.();
+        }
+      })
+    }
+    if(isModelTitle=="编辑"){
+      updateCategory({
+        ...formData,
+        _id: recordData._id
+      }).then(res=>{
+        if(res.code==200){
+          form.resetFields();
+          setIsModelVisible(false);
+          message.success('更新成功！')
           actionRef.current?.reloadAndRest?.();
         }
       })
@@ -150,7 +183,7 @@ const CategoryComp = () => {
         layout="horizontal"
         initialValues={{ }}
       >
-        {isModelTitle=="新增分类"&&(
+        {(isModelTitle=="新增分类"||isModelTitle=="编辑")&&(
           <Form.Item
             name="name"
             label="分类名称"

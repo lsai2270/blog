@@ -91,11 +91,11 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
   } = props;
   const menuDataRef = useRef<MenuDataItem[]>([]);
   useEffect(() => {
-    if (dispatch) {
-      dispatch({
-        type: 'user/fetchCurrent',
-      });
-    }
+    // if (dispatch) {
+    //   dispatch({
+    //     type: 'user/fetchCurrent',
+    //   });
+    // }
   }, []);
   /** Init variables */
 
@@ -161,7 +161,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
           return null;
         }}
         menuDataRender={menuDataRender}
-        rightContentRender={() => <RightContent />}
+        // rightContentRender={() => <RightContent />}
         postMenuData={(menuData) => {
           menuDataRef.current = menuData || [];
           return menuData || [];

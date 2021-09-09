@@ -15,4 +15,6 @@ export async function getList(params?:any): Promise<any> {
 export async function getAllList(): Promise<any> {
   return request.get('/category/list/all');
 }
-
+export async function updateCategory(data: any): Promise<any> {
+  return request.post('/category/update', { data });
+}

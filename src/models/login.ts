@@ -34,7 +34,12 @@ const Model: LoginModelType = {
 
   effects: {
     *login({ payload }, { call, put }) {
-      const response = yield call(fakeAccountLogin, payload);
+      const response = {
+        currentAuthority: "admin",
+        status: "ok",
+        type: "account"
+      } 
+      // yield call(fakeAccountLogin, payload);
       yield put({
         type: 'changeLoginStatus',
         payload: response,

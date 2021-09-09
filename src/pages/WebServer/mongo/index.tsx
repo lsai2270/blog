@@ -1,6 +1,5 @@
 import React, { useEffect,useState } from 'react';
 import { Space } from 'antd';
-import  { history } from 'umi';
 import { PageContainer } from '@ant-design/pro-layout';
 import {
   Banner,
@@ -15,22 +14,23 @@ import styles from './index.less';
 
 export default () => {
   const [articleData,setArticleData] = useState<any[]>([]);
-  const [category,setCategory] = useState<any>(undefined);
   useEffect(()=>{
-    // const { pathname } = history.location;
-    // const category = pathname.split('/')[2];
-    // const newCategory = category.slice(0,1).toUpperCase()+category.substring(1);
-    // setCategory(newCategory);
+    getList().then(res=>{
+      console.log(res);
+      if(res.code==200){
+        setArticleData(res.data);
+      }
+    })
   },[])
   return (
     <PageContainer pageHeaderRender={() => []}>
       <div className={styles.container}>
         <div className={styles.leftContainer}>
-          {/* <div>
+          <div>
             <Banner />
-          </div> */}
+          </div>
           <div className={styles.articles}>
-            <ArticelList title={`当前频道: 框架实践`} category={'框架实践'} />
+            <ArticelList title="最新文章" articleData={articleData} />
           </div>
         </div>
         <div className={styles.rightContainer}>
