@@ -160,6 +160,9 @@ const ArticelList: React.FC<ArticelListProps> = (props) => {
             </div>
           );
         })}
+        {articleData.length==0&&(
+          <div>暂无数据</div>
+        )}
       </div>
       <LoadingComp visible={visible} />
       { articleData&&articleData.length>0&&(

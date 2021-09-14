@@ -6,6 +6,7 @@ import { ExclamationCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, message, Row, Col, Modal, Space, Tag } from 'antd';
 const { confirm } = Modal;
 import { getList } from '@/services/articles';
+import styles from './index.less';
 const Article = () => {
   const actionRef = useRef<ActionType>();
   const [selectedRows, setSelectedRows] = useState<any[]>([]);
@@ -56,12 +57,27 @@ const Article = () => {
         >
           删除
         </a>,
+        <a
+          key="2"
+          onClick={() => {
+            handleOnEditor(record);
+          }}
+        >
+          编辑
+        </a>
       ],
     },
   ];
   // 删除
-  const handleOnDelete = (record: any) => {}; // 新建
+  const handleOnDelete = (record: any) => {
+
+  }; 
+  // 新建
   const handleOnRouteTo = () => {
+    history.push('/admin/article/list/add');
+  };
+  // 编辑
+  const handleOnEditor = (record: any) => {
     history.push('/admin/article/list/add');
   };
   // 批量删除

@@ -107,7 +107,6 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
           ) {
             return defaultDom;
           }
-
           return <Link to={menuItemProps.path}>{defaultDom}</Link>;
         }}
         breadcrumbRender={(routers = []) => [
@@ -131,7 +130,6 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
           if (settings.footerRender || settings.footerRender === undefined) {
             return defaultFooterDom;
           }
-
           return null;
         }}
         menuDataRender={menuDataRender}
