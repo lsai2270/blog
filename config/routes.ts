@@ -99,31 +99,31 @@
             routes:[
               {
                 path: '/webFront/react',
-                name: 'React',
+                name: 'react',
                 icon: 'home',
                 component: './WebFront',
               },
               {
                 path: '/webFront/vue',
-                name: 'Vue',
+                name: 'vue',
                 icon: 'home',
                 component: './WebFront',
               },
               {
                 path: '/webFront/html',
-                name: 'Html',
+                name: 'html',
                 icon: 'home',
                 component: './WebFront',
               },
               {
                 path: '/webFront/css',
-                name: 'Css',
+                name: 'css',
                 icon: 'home',
                 component: './WebFront',
               },
               {
                 path: '/webFront/js',
-                name: 'Js',
+                name: 'js',
                 icon: 'home',
                 component: './WebFront',
               },
@@ -136,19 +136,25 @@
             routes:[
               {
                 path: '/server/node',
-                name: 'Node',
+                name: 'node',
                 // icon: 'icon-service-full',
                 component: './WebServer',
               },
               {
                 path: '/server/mongo',
-                name: 'Mongo',
+                name: 'mongo',
                 // icon: 'icon-service-full',
                 component: './WebServer',
               },
               {
                 path: '/server/mysql',
-                name: 'Mysql',
+                name: 'mysql',
+                // icon: 'icon-service-full',
+                component: './WebServer',
+              },
+              {
+                path: '/server/docker',
+                name: 'docker',
                 // icon: 'icon-service-full',
                 component: './WebServer',
               },
