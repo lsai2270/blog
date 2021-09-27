@@ -8,12 +8,12 @@
 export default {
   dev: {
     '/api/': {
-      target: ' http://localhost:7001',
+      target: 'http://saiwfe.top:7001', //'http://localhost:7001',
       changeOrigin: true,
       pathRewrite: { '^': '' },
     },
     '/public': {
-      target: ' http://localhost:7001',
+      target: 'http://saiwfe.top:7001', //'http://localhost:7001',
       changeOrigin: true,
       pathRewrite: { '^': '' },
     },

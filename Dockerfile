@@ -9,7 +9,7 @@ RUN apk add --no-cache tzdata \
 
 # ENV SHJPSERVER=http://dev-api-shjp.citybit.cn
 # ENV DXFURL=http://dev-visum-net-viewer.citybit.cn/net/viewer/?netId=
-# ENV REACT_APP_ENV=prod
+ENV REACT_APP_ENV=prod
 
 WORKDIR /web/client/
 COPY package.json .
