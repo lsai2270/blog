@@ -54,10 +54,18 @@ ol {
 }
 
 // 自定义修改样式\
-.blogContainer{
+.blogContainer {
   .ant-pro-page-container-children-content {
     margin: 0;
     padding: 20px;
+  }
+  .ant-pro-top-nav-header {
+    //  margin: 0 20px;
+  }
+  .ant-pro-top-nav-header-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
   }
 }
 
@@ -69,16 +77,25 @@ ol {
 .ant-pro-table-search {
   margin-bottom: 0 !important;
   .ant-form-item {
-    margin-bottom: 10px !important;  
+    margin-bottom: 10px !important;
   }
 }
-.blogContainer{
-  .ant-pro-top-nav-header {
-  //  margin: 0 20px;
-  }
-  .ant-pro-top-nav-header-main {
-    padding: 0 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+
+.hljs ul {
+  margin: 0 0 0 40px !important;
+  padding: 0;
+  list-style: decimal;
+}
+.hljs li {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 !important;
+  padding: 2px 5px !important;
+  line-height: 14px;
+  list-style: decimal-leading-zero;
+  border-left: 1px solid #111 !important;
+}
+.hljs li:nth-of-type(even) {
+  color: inherit;
+  background-color: rgba(255, 255, 255, 0.015);
 }

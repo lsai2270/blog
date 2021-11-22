@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { PageContainer } from '@ant-design/pro-layout';
 import { Card, Alert, Typography } from 'antd';
 import { useIntl, FormattedMessage } from 'umi';
 import styles from './Welcome.less';
+import hljs from 'highlight.js/lib/core';
+import javascript from 'highlight.js/lib/languages/javascript';
+hljs.registerLanguage('javascript', javascript);
+import 'highlight.js/styles/atom-one-dark.css';
 
 const CodePreview: React.FC = ({ children }) => (
   <pre className={styles.pre}>
@@ -14,6 +18,16 @@ const CodePreview: React.FC = ({ children }) => (
 
 export default (): React.ReactNode => {
   const intl = useIntl();
+  useEffect(() => {
+    hljs.initHighlightingOnLoad();
+    var e = document.querySelectorAll('code');
+    console.log('e===>', e);
+    var e_len = e.length;
+    var i;
+    for (i = 0; i < e_len; i++) {
+      e[i].innerHTML = '<ul><li>' + e[i].innerHTML.replace(/\n/g, '\n</li><li>') + '\n</li></ul>';
+    }
+  }, []);
   return (
     <PageContainer>
       <Card>
@@ -57,6 +71,11 @@ export default (): React.ReactNode => {
           </a>
         </Typography.Text>
         <CodePreview>yarn add @ant-design/pro-layout</CodePreview>
+        <blockquote>
+          <pre>
+            <code className="JavaScript">let a = 1; a = a + 1;</code>
+          </pre>
+        </blockquote>
       </Card>
     </PageContainer>
   );
