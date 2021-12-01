@@ -1,0 +1,31 @@
+@import '~antd/lib/style/themes/default.less';
+.container {
+  width: 1000px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid grey;
+  .img {
+    width: 220px;
+    height: 300px;
+    border: 1px solid grey;
+  }
+  .baseList {
+    ul,
+    li {
+      margin: 0;
+      padding: 0;
+    }
+    li a {
+      display: block;
+      color: #000;
+      border-right: 2px solid transparent;
+    }
+    a.current {
+      border-right: 2px solid #1890ff;
+    }
+  }
+  .content {
+    height: 100vh;
+    overflow-y: scroll;
+  }
+}

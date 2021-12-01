@@ -58,7 +58,7 @@
                     icon: 'home',
                     component: './AdminManage/Comment',
                   },
-                ]
+                ],
               },
               {
                 path: '/admin/category',
@@ -75,6 +75,13 @@
             component: './404',
           },
         ],
+      },
+      // 个人简历
+      {
+        path: '/resume',
+        name: 'resume',
+        hideInMenu: true,
+        component: './Resume',
       },
       // 博客前端路由
       {
@@ -96,7 +103,7 @@
             path: '/webFront',
             name: 'webFront',
             icon: 'icon-h',
-            routes:[
+            routes: [
               {
                 path: '/webFront/react',
                 name: 'react',
@@ -127,13 +134,13 @@
                 icon: 'home',
                 component: './WebFront',
               },
-            ]
+            ],
           },
           {
             path: '/server',
             name: 'webServer',
             icon: 'icon-service-full',
-            routes:[
+            routes: [
               {
                 path: '/server/node',
                 name: 'node',
@@ -158,7 +165,7 @@
                 // icon: 'icon-service-full',
                 component: './WebServer',
               },
-            ]
+            ],
           },
           {
             path: '/frame',
@@ -170,14 +177,14 @@
             path: '/personal',
             name: 'personal',
             icon: 'icon-user',
-            routes:[
+            routes: [
               {
                 path: '/personal/introduce',
                 name: 'introduce',
                 icon: 'home',
                 component: './WebServer',
               },
-            ]
+            ],
           },
           {
             path: '/article',
