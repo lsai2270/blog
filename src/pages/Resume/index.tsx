@@ -1,33 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import { PageContainer } from '@ant-design/pro-layout';
-import { Row, Col, Image, Anchor } from 'antd';
+import { Row, Col, Image, Anchor, Affix } from 'antd';
 const { Link } = Anchor;
 import styles from './index.less';
 function index() {
   const baseInfo = [];
   const [currentActiveLink, setCurrentActiveLink] = useState<any>('#base1');
   return (
-    <PageContainer pageHeaderRender={() => []}>
+    <div className={styles.pageBox}>
       <div className={styles.container}>
         <Row>
-          <Col span={8}>
+          <Col span={7} className={styles.leftBox}>
             <div className={styles.img}></div>
             <div className={styles.baseList}>
               <Anchor
-                onChange={(currentActiveLink: string) => {
-                  console.log('currentActiveLink===>', currentActiveLink);
-                  setCurrentActiveLink(currentActiveLink);
+                getContainer={() => {
+                  let oDiv: any = document.querySelector('.rightBox');
+                  return oDiv;
                 }}
               >
                 <Link href="#base1" title="Basic demo" />
                 <Link href="#base2" title="Static demo" />
                 <Link href="#base3" title="API" />
                 <Link href="#base4" title="Anchor Props" />
-                <Link href="#base5" title="Link Props" />
               </Anchor>
             </div>
           </Col>
-          <Col span={16} className={styles.content}>
+          <Col span={16} className={`rightBox ${styles.content}`}>
             <div id="base1" style={{ height: 800 }}>
               <h1>
                 <a href="#base1">基础信息1</a>
@@ -51,7 +50,7 @@ function index() {
           </Col>
         </Row>
       </div>
-    </PageContainer>
+    </div>
   );
 }
 

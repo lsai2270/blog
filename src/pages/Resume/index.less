@@ -1,9 +1,27 @@
 @import '~antd/lib/style/themes/default.less';
+.pageBox {
+  background: #f0f0f0;
+}
 .container {
   width: 1000px;
   margin: 0 auto;
-  background: #fff;
-  border: 1px solid grey;
+  // background: #fff;
+  // border: 1px solid grey;
+  :global {
+    .ant-anchor-ink::before {
+      width: 0;
+    }
+    .ant-anchor-link {
+      border-right: 2px solid #f0f0f0;
+    }
+    .ant-anchor-link-active {
+      border-right: 2px solid #1890ff;
+    }
+    .ant-anchor-ink-ball {
+      display: none;
+      border: none;
+    }
+  }
   .img {
     width: 220px;
     height: 300px;
@@ -24,8 +42,16 @@
       border-right: 2px solid #1890ff;
     }
   }
+  .leftBox {
+    margin-right: 10px;
+    padding-right: 1px;
+    background: #fff;
+    border-radius: 5px;
+  }
   .content {
     height: 100vh;
     overflow-y: scroll;
+    background: #fff;
+    border-radius: 5px;
   }
 }
